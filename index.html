@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Color Game</title>
+    <style>
+      body {
+        background-color: white;
+        background-size: cover;
+        background-position: cover;
+        background-repeat: no-repeat;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        font-family: Arial, sans-serif;
+      }
+
+      .game-container {
+        text-align: center;
+        padding: 20px;
+        border: 2px solid whitesmoke;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        background-color: white;
+      }
+
+      h1 {
+        color: #333;
+        margin-bottom: 20px;
+        font-size: 24px;
+      }
+
+      button {
+        padding: 10px 20px;
+        margin: 10px;
+        font-size: 16px;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      button:hover {
+        background-color: grey;
+        transform: scale(1.05);
+      }
+
+      .start-button {
+        background-color: green;
+      }
+
+      .stop-button {
+        background-color: red;
+      }
+
+      .pause-button {
+        background-color: yellow;
+      }
+
+      button:focus {
+        outline: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="game-container">
+      <h1>Color Game Fun</h1>
+      <button class="start-button" onclick="start()">Start</button>
+      <button class="stop-button" onclick="stop()">Stop</button>
+      <button class="pause-button" onclick="pause()">Pause</button>
+    </div>
+
+    <script>
+      const colors = ["crimson", "plum", "orange", "purple"];
+      let index = 0;
+      let intervalId;
+
+      function start() {
+        intervalId = setInterval(() => {
+          if (index >= colors.length) {
+            index = 0;
+          }
+          document.body.style.backgroundColor = colors[index];
+          index++;
+        }, 2000);
+      }
+
+      function pause() {
+        clearInterval(intervalId);
+      }
+
+      function stop() {
+        clearInterval(intervalId);
+        index = 0;
+        document.body.style.backgroundColor = colors[index];
+      }
+    </script>
+  </body>
+</html>
